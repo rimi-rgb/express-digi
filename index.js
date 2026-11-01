@@ -1,9 +1,8 @@
+import 'dotenv/config'
 import express from 'express'
 
 const app = express()
-
-const port = 3000
-
+const port = process.env.PORT || 3000
 app.use(express.json())
 
 let teaData = []
@@ -41,8 +40,8 @@ app.put('/teas/:id', (req, res) => {
     res.send(200).send(tea)
 })
 
-//deletetea
 
+//deletetea
 app.delete('/teas/:id', (req, res) => {
     teaData.findIndex(t => t.id === parseInt(req.params.id))
     if (index === -1) {
